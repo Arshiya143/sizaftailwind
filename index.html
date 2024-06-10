@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sizaf</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <style>
+      .btn-custom:hover,
+      .btn-custom:focus,
+      .btn-custom:active,
+      .btn-custom[aria-selected="true"] {
+        color: black;
+        border-color: transparent;
+      }
+
+      .btn-custom:hover,
+      .btn-custom:focus,
+      .btn-custom:active,
+      .btn-custom[aria-selected="true"] {
+        border-color: #f6e05e !important;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="md:flex flex-col md:flex-row flex-grow w-full"
+      x-data="{ open: false, selected: 'storage' }"
+    >
+      <div
+        @click.away="open = false"
+        class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-200 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0"
+      >
+        <div
+          class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between"
+        >
+          <a
+            href="#"
+            class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
+          >
+            <img
+              class="h-12 w-12 md:w-20 md:h-20"
+              src="Logo.png"
+              alt="image description"
+            />
+          </a>
+          <button
+            class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline"
+            @click="open = !open"
+          >
+            <i x-show="!open" class="ri-menu-line"></i>
+            <i x-show="open" class="ri-close-line"></i>
+          </button>
+        </div>
+        <nav
+          :class="{'block': open, 'hidden': !open}"
+          class="flex-grow md:block pt-2 md:pb-0 md:overflow-y-auto"
+        >
+          <a
+            class="block px-8 py-3 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            href="#"
+          >
+            <span>Overview</span>
+          </a>
+          <a
+            class="block px-8 py-3 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex justify-between items-center"
+            href="#"
+          >
+            <span>System Setting</span>
+            <i class="ri-arrow-right-s-line text-yellow-300 text-xl"></i>
+          </a>
+          <a
+            class="block px-8 py-3 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex justify-between items-center"
+            href="#"
+          >
+            <span>Users and group</span>
+            <i class="ri-arrow-right-s-line text-yellow-300 text-xl"></i>
+          </a>
+
+          <a
+            @click="selected = 'storage'"
+            class="block px-8 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 mt-2 text-sm font-semibold text-yellow-300 bg-black active:bg-black rounded-r-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-yellow-300 focus:text-gray-900 hover:bg-black focus:bg-black focus:text-yellow-300 flex justify-between items-center"
+            href="#"
+          >
+            <span>Storage/file</span>
+            <span>
+              <i class="ri-arrow-right-s-line text-yellow-300 text-xl"></i>
+            </span>
+          </a>
+
+          <a
+            class="block px-8 py-3 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex justify-between items-center"
+            href="#"
+            >Plugin Center
+            <i class="ri-arrow-right-s-line text-yellow-300 text-xl"></i>
+          </a>
+          <a
+            class="block px-8 py-3 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex justify-between items-center"
+            href="#"
+            >Safety Control
+            <i class="ri-arrow-right-s-line text-yellow-300 text-xl"></i>
+          </a>
+          <a
+            class="block px-8 py-3 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex justify-between items-center"
+            href="#"
+            >Server
+            <i class="ri-arrow-right-s-line text-yellow-300 text-xl"></i>
+          </a>
+        </nav>
+      </div>
+      <div class="flex-grow p-4 bg-gray-100">
+        <div x-show="selected === 'storage'" class="content">
+          <div class="flex items-center mb-3">
+            <i class="ri-settings-3-fill text-black text-2xl"></i>
+            <span class="text-black text-lg ml-2">System Setting</span>
+          </div>
+
+          <div
+            class="container-fluid mx-auto p-2 bg-yellow-300 flex flex-wrap justify-between items-center"
+          >
+            <div class="text-left text-black">
+              Storage / File -&gt; <span class="font-semibold">Share</span>
+            </div>
+            <div
+              class="flex flex-wrap space-x-2 md:space-x-4 mt-2 md:mt-0 mr-0 md:mr-7"
+            >
+              <button
+                class="border border-black text-black px-3 py-1 rounded"
+                id="cancel"
+              >
+                <i class="ri-close-circle-fill"></i> Cancel Sharing
+              </button>
+              <button class="border border-black text-black px-3 py-1 rounded">
+                <i class="ri-download-2-fill"></i> Export
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-4 border-b border-transparent dark:border-gray-700">
+            <ul
+              class="flex flex-wrap -mb-px text-sm font-medium text-center"
+              id="default-tab"
+              data-tabs-toggle="#default-tab-content"
+              role="tablist"
+            >
+              <li class="me-2" role="presentation">
+                <button
+                  class="btn-custom inline-block p-4 border-b-2 rounded-t-lg font-semibold"
+                  id="sharing-tab"
+                  data-tabs-target="#sharing"
+                  type="button"
+                  role="tab"
+                  aria-controls="sharing"
+                  aria-selected="true"
+                  style="outline: none"
+                >
+                  Sharing
+                </button>
+              </li>
+              <li class="me-2" role="presentation">
+                <button
+                  class="btn-custom inline-block p-4 border-b-2 rounded-t-lg font-semibold"
+                  id="report-tab"
+                  data-tabs-target="#report"
+                  type="button"
+                  role="tab"
+                  aria-controls="report"
+                  aria-selected="false"
+                  style="outline: none"
+                >
+                  Sharing Reports
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div id="default-tab-content">
+            <div
+              class="hidden p-1 rounded-lg bg-transparent dark:bg-gray-800 md:h-screen lg:h-0"
+              id="sharing"
+              role="tabpanel"
+              aria-labelledby="sharing-tab"
+            >
+              <div class="flex flex-wrap justify-start gap-4">
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  Today
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  Last 30 days
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  All
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  Customize
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300 text-center inline-flex items-center"
+                  type="button"
+                >
+                  Select User
+                  <i class="ri-arrow-down-s-line ml-2"></i>
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300 text-center inline-flex items-center"
+                  type="button"
+                >
+                  Type
+                  <i class="ri-arrow-down-s-line ml-2"></i>
+                </button>
+              </div>
+              <div class="overflow-x-auto mt-4">
+                <table class="table-auto w-full">
+                  <thead class="bg-gray-400 text-white">
+                    <tr>
+                      <th class="px-4 py-2">Sharer</th>
+                      <th class="px-4 py-2">Name</th>
+                      <th class="px-4 py-2">Type</th>
+                      <th class="px-4 py-2">Details</th>
+                      <th class="px-4 py-2">View</th>
+                      <th class="px-4 py-2">
+                        Downloads<i class="ri-arrow-down-s-fill ml-1"></i>
+                      </th>
+                      <th class="px-4 py-2">Expiration</th>
+                      <th class="px-4 py-2">
+                        Time<i class="ri-arrow-down-s-fill ml-1"></i>
+                      </th>
+                      <th class="px-4 py-2">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="9" class="text-center py-4 h-full">
+                        <div class="flex flex-col justify-center items-center">
+                          <i
+                            class="ri-folder-open-fill text-9xl text-yellow-300"
+                          ></i>
+                          <span>No Data Found</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Table rows here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="hidden p-1 rounded-lg dark:bg-gray-800"
+              id="report"
+              role="tabpanel"
+              aria-labelledby="report-tab"
+            >
+              <div class="flex flex-wrap justify-start gap-4">
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  Today
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  Last 30 days
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  All
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300"
+                >
+                  Customize
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300 text-center inline-flex items-center"
+                  type="button"
+                >
+                  Select User
+                  <i class="ri-arrow-down-s-line ml-2"></i>
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300 text-center inline-flex items-center"
+                  type="button"
+                >
+                  Type
+                  <i class="ri-arrow-down-s-line ml-2"></i>
+                </button>
+                <button
+                  class="bg-transparent hover:border-yellow-300 text-black font-semibold hover:text-black py-1 px-3 border border-black rounded-lg focus:border-yellow-300 text-center inline-flex items-center"
+                  type="button"
+                  data-dropdown-toggle="dropdown"
+                >
+                  Bulk operations
+                  <i class="ri-arrow-down-s-line ml-2"></i>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div
+                  class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow"
+                  id="dropdown"
+                >
+                  <ul class="py-1" aria-labelledby="dropdown">
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm hover:bg-yellow-300 text-gray-700 block px-4 py-2"
+                        >Close report</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm hover:bg-yellow-300 text-gray-700 block px-4 py-2"
+                        >Unshare</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm hover:bg-yellow-300 text-gray-700 block px-4 py-2"
+                        >Prohibit/ allow sharing</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="overflow-x-auto mt-4">
+                <table class="table-auto w-full">
+                  <thead class="bg-gray-400 text-white">
+                    <tr>
+                      <th class="px-4 py-2">Whistleblower</th>
+                      <th class="px-4 py-2">Report sharing</th>
+                      <th class="px-4 py-2">Reason for reporting</th>
+                      <th class="px-4 py-2">
+                        Time<i class="ri-arrow-down-s-fill ml-1"></i>
+                      </th>
+                      <th class="px-4 py-2">Process result</th>
+                      <th class="px-4 py-2">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="9" class="text-center py-4">
+                        <div class="flex flex-col justify-center items-center">
+                          <i
+                            class="ri-folder-open-fill text-9xl text-yellow-300"
+                          ></i>
+                          <span>No Data Found</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Table rows here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="bg-gray-100 dark:bg-gray-800 w-full py-4 m-0 flex justify-between items-center px-4 md:px-6"
+    >
+      <div>
+        <label
+          class="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+        >
+          File
+          <input type="file" class="hidden" />
+        </label>
+      </div>
+      <div>
+        <img class="h-auto max-w-full" src="Logo.png" alt="Logo" />
+      </div>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#sharing-tab").click(function () {
+          $("#cancel").show();
+        });
+        $("#report-tab").click(function () {
+          $("#cancel").hide();
+        });
+      });
+    </script>
+  </body>
+</html>
