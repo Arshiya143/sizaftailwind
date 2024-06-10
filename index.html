@@ -121,9 +121,9 @@
           </a>
         </nav>
       </div>
-      <div class="flex-grow p-4 bg-gray-100">
+      <div class="flex-grow bg-gray-100">
         <div x-show="selected === 'storage'" class="content">
-          <div class="flex items-center mb-3">
+          <div class="flex items-center m-3">
             <i class="ri-settings-3-fill text-black text-2xl"></i>
             <span class="text-black text-lg ml-2">System Setting</span>
           </div>
@@ -250,21 +250,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td colspan="9" class="text-center py-4 h-full">
-                        <div class="flex flex-col justify-center items-center">
-                          <i
-                            class="ri-folder-open-fill text-9xl text-yellow-300"
-                          ></i>
-                          <span>No Data Found</span>
-                        </div>
-                      </td>
-                    </tr>
                     <!-- Table rows here -->
                   </tbody>
                 </table>
               </div>
+              <div
+                class="flex-grow flex flex-col justify-center items-center h-full lg:mt-44"
+              >
+                <i class="ri-folder-open-fill text-9xl text-yellow-300"></i>
+                <span>No Data Found</span>
+              </div>
             </div>
+
             <div
               class="hidden p-1 rounded-lg dark:bg-gray-800"
               id="report"
@@ -360,19 +357,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td colspan="9" class="text-center py-4">
-                        <div class="flex flex-col justify-center items-center">
-                          <i
-                            class="ri-folder-open-fill text-9xl text-yellow-300"
-                          ></i>
-                          <span>No Data Found</span>
-                        </div>
-                      </td>
-                    </tr>
                     <!-- Table rows here -->
                   </tbody>
                 </table>
+              </div>
+              <div
+                class="flex-grow flex flex-col justify-center items-center h-full lg:mt-44"
+              >
+                <i class="ri-folder-open-fill text-9xl text-yellow-300"></i>
+                <span>No Data Found</span>
               </div>
             </div>
           </div>
